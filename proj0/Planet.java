@@ -65,4 +65,13 @@ public class Planet {
         }
         return netForce_y;
     }
+
+    public void update(double dt, double Fx , double Fy){
+        double ax = Fx / mass;
+        double ay = Fy / mass;
+        xxVel = xxVel + dt * ax;
+        yyVel = yyVel + dt * ay;
+        xxPos = xxPos + dt * xxVel;
+        yyPos = yyPos + dt * yyVel;
+    }
 }
