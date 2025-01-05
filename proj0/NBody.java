@@ -1,4 +1,6 @@
 public class NBody {
+    public static String background = "starfield.jpg";
+
     public static double readRadius(String fileAddress){
         In in = new In(fileAddress);
         int Planet_nums = in.readInt();
@@ -25,6 +27,20 @@ public class NBody {
     }
 
     public static void main(String[] args) {
-        readRadius("data/planets.txt");
+        Double T = Double.parseDouble(args[0]);
+        Double dt = Double.parseDouble(args[1]);
+        String filename = args[2];
+        In in = new In(filename);
+        double Radius = readRadius(filename);
+        Planet[] planets = readPlanets(filename);
+        
+        StdDraw.enableDoubleBuffering();
+        StdDraw.setScale(-Radius,Radius);
+        StdDraw.clear();
+        StdDraw.picture(0, 0, "images/"+background);
+        for (Planet p : planets){
+            p.draw();
+            // StdDraw.pause(200);
+        }
     }
 }
